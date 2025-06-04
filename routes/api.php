@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AreaController;
-use App\Http\Controllers\Api\TrainingCenterController;
-use App\Http\Controllers\Api\ComputerController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\TrainingCenterController;
+use App\Http\Controllers\ComputerController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
