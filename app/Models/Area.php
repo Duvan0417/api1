@@ -12,7 +12,12 @@ class Area extends Model
     // Definir los campos que se pueden llenar masivamente
     protected $fillable = [
         'name',
+        'description'
     ];
-
-
+    public function courses(){
+        return $this->hasMany(course::class);
+    }
+    public function teachers(){
+        return $this->hasMany(teachers::class);
+    }
 }

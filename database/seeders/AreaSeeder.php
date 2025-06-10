@@ -11,15 +11,15 @@ class AreaSeeder extends Seeder
     public function run(): void
     {
         $areas = [
-            'filofia',
-            'quimica',
-            'ambiental',
-            'sociales',
-            'barismo',
+            ['name'=> 'filosofia','description'=>'aaaaaaaaaaaaaaaaaaaaaa'],
+            ['name'=> 'matematicas','description'=>'qqqqqqqqqqqqqqqqqqqqqq'],
+            ['name'=> 'ciencias','description'=>'wwwwwwwwwwwwwwwwwwwwww'],
+            ['name'=> 'economia','description'=>'rrrrrrrrrrrrrrrrrrrrrr'],
+            ['name'=> 'calculo','description'=>'pppppppppppppppppppppp'],
         ];
 
-        foreach ($areas as $name) {
-            Area::create(['name' => $name]);
+        foreach ($areas as $areas) {
+            Area::create($areas);
         }
     }
 }

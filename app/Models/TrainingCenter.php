@@ -14,6 +14,10 @@ class TrainingCenter extends Model
         'name',
         'location',
     ];
-
-
+    public function teachers(){
+        return $this->hasMany(teachers::class);
+    }
+    public function courses(){
+        return $this->hasMany(course::class);
+    }
 }

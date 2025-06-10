@@ -14,6 +14,8 @@ class Computer extends Model
         'number',
         'brand',
     ];
-
+    public function apprendices(){
+        return $this->hasOne(apprendices::class);
+    }
 
 }
