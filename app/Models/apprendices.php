@@ -12,7 +12,7 @@ class apprendices extends Model
     protected $fillable=[
         'name',
         'email',
-        'cell number'
+        'cellnumber'
     ];
     public function course(){
         return $this->belongsTo(course::class);

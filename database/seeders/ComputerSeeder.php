@@ -15,6 +15,7 @@ class ComputerSeeder extends Seeder
             ['number' => 'PC-002', 'brand' => 'HP'],
             ['number' => 'PC-003', 'brand' => 'msi'],
             ['number' => 'PC-004', 'brand' => 'Acer'],
+            ['number' => 'PC-005', 'brand' => 'asus'],
         ];
 
         foreach ($computers as $computer) {
