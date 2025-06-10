@@ -66,7 +66,7 @@ class course extends Model
     }
     public function apprendices()
     {
-        return $this->hasMany(apprendices::class);
+        return $this->hasMany(Apprendices::class);
     }
     public function trainingcenter()
     {
