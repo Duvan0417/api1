@@ -15,6 +15,7 @@ class TrainingCenterSeeder extends Seeder
             ['name' => 'sur', 'location' => 'cali'],
             ['name' => 'oeste', 'location' => 'timbio'],
             ['name' => 'suroeste', 'location' => 'piendamo'],
+            ['name' => 'suroeste', 'location' => 'cajibio'],
         ];
 
         foreach ($centers as $center) {

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('cellnumber');
+            $table->foreignId('course_id')->nullable()->constrained('courses')->onDelete('cascade');
+            $table->foreignId('computer_id')->nullable()->constrained('computers')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -10,22 +10,26 @@ class Area extends Model
 {
     use HasFactory;
 
-    // Definir los campos que se pueden llenar masivamente
     protected $fillable = [
         'name',
         'description'
     ];
 
-    protected $allowIncluded =['teacher','teacher.trainingcenter'];
-    public function courses(){
-        return $this->hasMany(course::class);
-    }
-    public function teachers(){
-        return $this->hasMany(teachers::class);
-    }
-
-    public function scopeInclude(Builder $query){
-        $relation=explode(',',request('include'));
-        $query->with($relation);
+    protected $allowInclude = ['courses', 'teachers', 'teachers.trainingcenter'];
+    
+    public function scopeInclude(Builder $query)
+    {
+        if (empty($this->allowInclude) || empty(request('include'))) {
+            return $query;
+        }
+        
+        $relations = explode(',', request('include'));
+        $allowedRelations = array_intersect($relations, $this->allowInclude);
+        
+        if (!empty($allowedRelations)) {
+            $query->with($allowedRelations);
+        }
+        
+        return $query;
     }
 }

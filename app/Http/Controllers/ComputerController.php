@@ -8,7 +8,8 @@ class ComputerController extends Controller
 {
     public function index()
     {
-        return response()->json(Computer::all());
+        $computers = Computer::include();
+        return response()->json($computers);
     }
 
     public function store(Request $request)
@@ -24,7 +25,7 @@ class ComputerController extends Controller
 
     public function show($id)
     {
-        $computer = Computer::findOrFail($id);
+        $computer = Computer::include()->findOrFail($id);
         return response()->json($computer);
     }
 
@@ -36,7 +37,7 @@ class ComputerController extends Controller
         ]);
 
         $computer = Computer::findOrFail($id);
-        $computer->fill($request->all())->save();
+        $computer->update($request->all());
 
         return response()->json($computer);
     }

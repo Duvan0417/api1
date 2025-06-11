@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -6,9 +7,10 @@ use App\Models\TrainingCenter;
 
 class TrainingCenterController extends Controller
 {
-    public function index()
+public function index()
     {
-        return response()->json(TrainingCenter::all());
+        $centers = TrainingCenter::include()->get();
+        return response()->json($centers);
     }
 
     public function store(Request $request)
@@ -24,7 +26,7 @@ class TrainingCenterController extends Controller
 
     public function show($id)
     {
-        $center = TrainingCenter::findOrFail($id);
+        $center = TrainingCenter::include()->findOrFail($id);
         return response()->json($center);
     }
 
@@ -36,7 +38,7 @@ class TrainingCenterController extends Controller
         ]);
 
         $center = TrainingCenter::findOrFail($id);
-        $center->fill($request->all())->save();
+        $center->update($request->all());
 
         return response()->json($center);
     }
