@@ -15,7 +15,7 @@ class Computer extends Model
         'brand',
     ];
     
-    protected $allowInclude = ['apprendice','apprendice.course'];
+    protected $allowInclude = ['apprendice','apprendice.course','course'];
     
     public function scopeInclude(Builder $query)
     {

@@ -8,7 +8,7 @@ class ComputerController extends Controller
 {
     public function index()
     {
-        $computers = Computer::include();
+        $computers = Computer::include()->get;
         return response()->json($computers);
     }
 

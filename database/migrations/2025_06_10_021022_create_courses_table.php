@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('coursenumber');
             $table->string('day');
+            $table->foreignId('area_id')->constrained('areas')->onDelete('cascade');
+            $table->foreignId('trainingcenter_id')->constrained('training_centers')->onDelete('cascade');
             $table->timestamps();
         });
     }

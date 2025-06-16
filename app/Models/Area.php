@@ -17,6 +17,13 @@ class Area extends Model
 
     protected $allowInclude = ['courses', 'teachers', 'teachers.trainingcenter'];
     
+    public function courses(){
+        return $this->hasMany(course::class);
+    }
+        public function teachers(){
+        return $this->hasMany(teachers::class);
+    }
+
     public function scopeInclude(Builder $query)
     {
         if (empty($this->allowInclude) || empty(request('include'))) {

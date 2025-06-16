@@ -18,7 +18,7 @@ class apprendices extends Model
         'computer_id'
     ];
     
-    protected $allowInclude = ['course', 'course.area', 'course.trainingcenter', 'computer',];
+    protected $allowInclude = ['course', 'course.area', 'course.trainingcenter', 'computer','course.area.teacher'];
     
     public function scopeInclude(Builder $query)
     {
