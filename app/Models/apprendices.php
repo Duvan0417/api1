@@ -62,7 +62,7 @@ class apprendices extends Model
     return $query;
 }
     
-    // Relaciones corregidas
+
     public function course()
     {
         return $this->belongsTo(Course::class);
