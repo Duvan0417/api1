@@ -9,7 +9,7 @@ class CourseController extends Controller
 {
 public function index()
     {
-        $courses = Course::include()->get();
+        $courses = Course::include()->filter()->get();
         return response()->json($courses);
     }
 

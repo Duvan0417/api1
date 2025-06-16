@@ -9,7 +9,7 @@ class AreaController extends Controller
 {
 public function index()
     {
-        $areas = Area::include()->get();
+        $areas = Area::include()->filter()->get();
         return response()->json($areas);
     }
 

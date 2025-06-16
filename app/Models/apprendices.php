@@ -19,6 +19,7 @@ class apprendices extends Model
     ];
     
     protected $allowInclude = ['course', 'course.area', 'course.trainingcenter', 'computer','course.area.teacher'];
+    protected $allowFilter = ['id','name'];
     
     public function scopeInclude(Builder $query)
     {
@@ -35,6 +36,31 @@ class apprendices extends Model
         
         return $query;
     }
+
+    public function scopeFilter(Builder $query)
+{
+    // Validar que allowFilter está definido y es un array
+    if (!is_array($this->allowFilter) || empty($this->allowFilter)) {
+        return $query;
+    }
+
+    // Obtener filtros de la solicitud y asegurarse de que es un array
+    $filters = request('filter');
+
+    if (!is_array($filters) || empty($filters)) {
+        return $query;
+    }
+
+    $allowFilter = collect($this->allowFilter);
+
+    foreach ($filters as $filter => $value) {
+        if ($allowFilter->contains($filter) && !empty($value)) {
+            $query->where($filter, 'LIKE', '%'.$value.'%');
+        }
+    }
+
+    return $query;
+}
     
     // Relaciones corregidas
     public function course()

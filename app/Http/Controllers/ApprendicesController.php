@@ -9,7 +9,7 @@ class ApprendicesController extends Controller
 {
     public function index()
     {
-        $apprendices = apprendices::include()->get();
+        $apprendices = apprendices::include()->filter()->get();
         return response()->json($apprendices);
     }
     
