@@ -10,21 +10,23 @@ class ApprendicesController extends Controller
 {
     protected $apprendicesService;
 
-    public function _construct(ApprendicesService $apprendicesService){
+    public function __construct(ApprendicesService $apprendicesService)
+    {
         $this->apprendicesService = $apprendicesService;
     }
-    public function create(Request $request){
-        $request->validate(([
-        'name' => 'required|string|max:55',
-        'email' => 'required|string|max:55',
-        'cellnumber' => 'required|string|max:55',
-        'course_id' => 'required|integer|max:55',
-        'computer_id'=>'required|integer|max:55',
-        ]));
+    public function create(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:55',
+            'email' => 'required|string|max:55',
+            'cellnumber' => 'required|string|max:55',
+            'course_id' => 'required|integer|exists:courses,id',
+            'computer_id' => 'required|integer|exists:computers,id',
+        ]);
         $apprendices = $this->apprendicesService->create($request->all());
         return response()->json([
             'message' => 'creado correctamente',
             'data' => $apprendices,
-        ],201);
+        ], 201);
     }
 }
