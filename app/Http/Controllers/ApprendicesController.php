@@ -6,6 +6,7 @@ use App\Models\apprendices;
 use App\Services\ApprendicesService;
 use Illuminate\Http\Request;
 
+
 class ApprendicesController extends Controller
 {
     protected $apprendicesService;
@@ -18,7 +19,8 @@ class ApprendicesController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:55',
-            'email' => 'required|string|max:55',
+            'email' => 'required|email|max:55',
+            'password' => 'required|string|max:55',
             'cellnumber' => 'required|string|max:55',
             'course_id' => 'required|integer|exists:courses,id',
             'computer_id' => 'required|integer|exists:computers,id',

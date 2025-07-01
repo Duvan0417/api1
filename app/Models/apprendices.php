@@ -21,6 +21,13 @@ class Apprendices extends Model
     protected $allowInclude = ['course', 'course.area', 'course.trainingcenter', 'computer','course.area.teacher'];
     protected $allowFilter = ['id','name'];
 
+    public function getJWtidetifier(){
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims(){
+        return [];
+    }
+
     public function scopeInclude(Builder $query)
     {
         if (empty($this->allowInclude) || empty(request('include'))) {

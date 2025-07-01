@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
             AreaSeeder::class,
             TrainingCenterSeeder::class,
             ComputerSeeder::class,
+            CourseSeeder::class,
+            apprendiceSeeder::class,
+            TeacherSeeder::class,
         ]);
-    }
+    }                                           
 }
